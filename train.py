@@ -80,7 +80,7 @@ def build_network_architecture():
         ]
     )
     ConvNet.compile(
-    optimizer = tf.keras.optimizers.AdamW(
+    optimizer = tf.keras.optimizers.legacy.Adam(
         learning_rate = 0.0001
     ),
     loss = tf.keras.losses.SparseCategoricalCrossentropy(),
@@ -118,6 +118,7 @@ def train():
     return history
 
 def plot_performance(peformance):
+    plt.figure(figsize = (15, 10))
     sns.lineplot(peformance.history)
     plt.savefig('performance.png')
 
